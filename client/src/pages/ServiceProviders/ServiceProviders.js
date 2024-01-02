@@ -1,21 +1,21 @@
-import { useNavigate } from "react-router-dom";
-import { Layout, Space, Flex, Card, Breadcrumb, Form, Input, Upload, Button, Tabs, Row, Col, Modal, } from 'antd';
-import { HomeOutlined, UserOutlined, FileImageOutlined, HeartOutlined, HeartFilled, WechatOutlined, PlusCircleOutlined, MinusCircleOutlined } from '@ant-design/icons';
+// import { useNavigate } from "react-router-dom";
+import { Layout, Space, Card, Breadcrumb, Tabs, Row, Col, } from 'antd';
+import { HomeOutlined } from '@ant-design/icons';
 import LHeader from '../../components/Header/LHeader';
 import './ServiceProviders.scss';
 import LFooter from '../../components/Footer/LFooter';
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import { getAllProviders } from "../../features/providerDetailsSlice";
 
-const { Header, Content, Footer } = Layout;
+const { Content } = Layout;
 const { Meta } = Card;
 
 function ServiceProviders() {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const [open, setOpen] = useState(false);
+  // const [open, setOpen] = useState(false);
 
   const providerData = useSelector((state) => state.provider);
 
@@ -23,19 +23,19 @@ function ServiceProviders() {
 
   //Filter Tutor providers from APIs
   const tutorList = providerData?.providers?.data?.allProvidersDetails.filter(
-    (el) => el.providerServiceType == "tutor",
+    (el) => el.providerServiceType === "tutor",
     []
   );
 
   //Filter stationery providers from APIs
   const stationeryList = providerData?.providers?.data?.allProvidersDetails.filter(
-    (el) => el.providerServiceType == "stationery",
+    (el) => el.providerServiceType === "stationery",
     []
   );
 
   //Filter stationery providers from APIs
   const gymList = providerData?.providers?.data?.allProvidersDetails.filter(
-    (el) => el.providerServiceType == "gym",
+    (el) => el.providerServiceType === "gym",
     []
   );
 
@@ -154,7 +154,9 @@ function ServiceProviders() {
                                     description={el.providerServiceType}
                                   />
                                   <h5> Location :- <b>{el.providerLocation}. </b></h5>
-                                  <Button type="primary" onClick={() => setOpen(true)}> View Detail</Button>
+                                  {/* <Button type="primary" onClick={() => setOpen(true)}> View Detail</Button> */}
+                                  <a className="chatBtn" href={`https://wa.me/91${el.providerNumber}`} > CHAT</a>
+
                                 </Card>
                               </Col>
                             ))
@@ -187,7 +189,9 @@ function ServiceProviders() {
                                     description={el.providerServiceType}
                                   />
                                   <h5> Location :- <b>{el.providerLocation}. </b></h5>
-                                  <Button type="primary" onClick={() => setOpen(true)}> View Detail</Button>
+                                  {/* <Button type="primary" onClick={() => setOpen(true)}> View Detail</Button> */}
+                                  <a className="chatBtn" href={`https://wa.me/91${el.providerNumber}`} > CHAT</a>
+
                                 </Card>
                               </Col>
                             ))

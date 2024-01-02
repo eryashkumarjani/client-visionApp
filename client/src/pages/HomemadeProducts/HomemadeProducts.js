@@ -1,6 +1,6 @@
-import { useNavigate } from "react-router-dom";
-import { Layout, Space, Flex, Card, Breadcrumb, Form, Input, Upload, Button, Tabs, Row, Col, } from 'antd';
-import { HomeOutlined, UserOutlined, FileImageOutlined, HeartOutlined, HeartFilled, WechatOutlined, PlusCircleOutlined, MinusCircleOutlined } from '@ant-design/icons';
+// import { useNavigate } from "react-router-dom";
+import { Layout, Space, Card, Breadcrumb, Button, Tabs, Row, Col, } from 'antd';
+import { HomeOutlined, PlusCircleOutlined, MinusCircleOutlined } from '@ant-design/icons';
 import LHeader from '../../components/Header/LHeader';
 import './HomemadeProducts.scss';
 import LFooter from '../../components/Footer/LFooter';
@@ -11,18 +11,18 @@ import {
 } from "../../features/productDetailsSlice";
 import axios from "axios";
 
-const { Header, Content, Footer } = Layout;
+const { Content } = Layout;
 const { Meta } = Card;
 
 function HomemadeProducts() {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const productData = useSelector((state) => state.product);
 
   //Filter Tutor providers from APIs
   const woodworkList = productData?.products?.data?.allProductsDetails.filter(
-    (el) => el.productType == "woodwork", []
+    (el) => el.productType === "woodwork", []
   );
 
   //cart Items
@@ -36,7 +36,7 @@ function HomemadeProducts() {
 
   useEffect(() => {
     dispatch(getCartTotal());
-  }, [allCart]);
+  }, [allCart, dispatch]);
 
   const checkouthandler = async (totalPrice) => {
     const { data: { order } } = await axios.post("http://localhost:8080/api/v1/razorpay/checkout", { totalPrice })
@@ -203,8 +203,6 @@ function HomemadeProducts() {
                     </Row>
                   ) : <div className="emptyCartBox"> <img src={process.env.PUBLIC_URL + '/emptyCart.png'} alt='logo' /></div>
                   }
-
-                  <h4></h4>
                 </div>
 
               </div>

@@ -1,16 +1,15 @@
-import { useNavigate } from "react-router-dom";
-import { Layout, Space, Flex, Card, Breadcrumb, Form, Input, Upload, Button, Select, Popconfirm, Table, message } from 'antd';
-import { HomeOutlined, UserOutlined, FileImageOutlined, HeartOutlined, HeartFilled, WechatOutlined, DeleteOutlined, EditOutlined, PhoneOutlined, EnvironmentOutlined } from '@ant-design/icons';
+import { Layout, Space, Flex, Breadcrumb, Form, Input, Upload, Button, Select, Popconfirm, Table, message } from 'antd';
+import { HomeOutlined, UserOutlined, FileImageOutlined, DeleteOutlined, EditOutlined, PhoneOutlined, EnvironmentOutlined } from '@ant-design/icons';
 import LHeader from '../../components/Header/LHeader';
 import './AddServiceProviders.scss';
 import LFooter from '../../components/Footer/LFooter';
 import { useEffect, useState } from "react";
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import axios from "axios";
 import { addProvider, getAllProviders } from "../../features/providerDetailsSlice";
 
-const { Header, Content, Footer } = Layout;
-const { Meta } = Card;
+const { Content } = Layout;
+// const { Meta } = Card;
 const { Option } = Select;
 
 const EditableCell = ({ editing, dataIndex, title, record, children, ...restProps }) => {
@@ -30,7 +29,7 @@ const EditableCell = ({ editing, dataIndex, title, record, children, ...restProp
 };
 
 function AddServiceProviders() {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const dispatch = useDispatch();
 
   //Editing Data in Form
@@ -95,7 +94,7 @@ function AddServiceProviders() {
       width: 150,
       render: (_, record) => {
         return modifiedData.length >= 1 ? (
-          <img src={record.providerImage} width={50} />
+          <img src={record.providerImage} alt="provider img" width={50} />
         ) : null;
       }
     },
@@ -217,12 +216,12 @@ function AddServiceProviders() {
     });
   };
 
-  const error = () => {
-    messageApi.open({
-      type: 'error',
-      content: 'Something went wrong!',
-    });
-  };
+  // const error = () => {
+  //   messageApi.open({
+  //     type: 'error',
+  //     content: 'Something went wrong!',
+  //   });
+  // };
 
 
   //value is coming in console but...
@@ -240,7 +239,7 @@ function AddServiceProviders() {
     }
     catch (error) {
       console.warn("#Error", error);
-      error(error);
+      // error(error);
     }
 
 

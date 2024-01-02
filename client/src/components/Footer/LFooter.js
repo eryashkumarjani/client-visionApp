@@ -1,7 +1,7 @@
 import { Layout } from 'antd';
 import './LFooter.scss';
 
-const { Header, Content, Footer } = Layout;
+const { Footer } = Layout;
 
 function LFooter() {
   return (

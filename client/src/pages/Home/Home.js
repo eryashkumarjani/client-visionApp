@@ -4,7 +4,7 @@ import { Button } from 'antd';
 import LFooter from '../../components/Footer/LFooter';
 import './Home.scss';
 
-const { Header, Content, Footer } = Layout;
+const { Header, Content } = Layout;
 
 function Home() {
   const navigate = useNavigate();
@@ -15,8 +15,8 @@ function Home() {
         <Layout className='mainLayout'>
           <Header className='mainHeader'>
             <Flex gap="small" justify={'flex-end'} align={'center'}>
-              <Button className='signupBtn' onClick={()=>  {navigate('/signup');} }>Signup</Button>
-              <Button className='signinBtn'  onClick={()=>  {navigate('/signin');} } >Signin</Button>
+              <Button className='signupBtn' onClick={() => { navigate('/signup'); }}>Signup</Button>
+              <Button className='signinBtn' onClick={() => { navigate('/signin'); }} >Signin</Button>
             </Flex>
           </Header>
           <Content className='mainContent'>

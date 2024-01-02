@@ -2,13 +2,13 @@ import { useNavigate } from "react-router-dom";
 import './Signup.scss';
 import { Layout, Space, Flex, Input, Button, Radio, Form, Upload, DatePicker, message } from 'antd';
 import dayjs from 'dayjs';
-import { UserOutlined, LockOutlined, MailOutlined, CloudUploadOutlined, GoogleOutlined, FacebookOutlined } from '@ant-design/icons';
+import { UserOutlined, LockOutlined, MailOutlined, CloudUploadOutlined, GoogleOutlined } from '@ant-design/icons';
 import LFooter from '../../components/Footer/LFooter';
 import { useFirebase } from "../../context/Firebase";
-import { useEffect, useState } from "react";
+// import { useState } from "react";
 import moment from 'moment';
 
-const { Header, Content, Footer } = Layout;
+const { Header, Content } = Layout;
 
 function Signup() {
   const navigate = useNavigate();
@@ -18,12 +18,12 @@ function Signup() {
   //Notification Code
   const [messageApi, contextHolder] = message.useMessage();
 
-  const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-  const [dob, setDob] = useState("");
-  const [gender, setGender] = useState("");
+  // const [username, setUsername] = useState("");
+  // const [email, setEmail] = useState("");
+  // const [password, setPassword] = useState("");
+  // const [confirmPassword, setConfirmPassword] = useState("");
+  // const [dob, setDob] = useState("");
+  // const [gender, setGender] = useState("");
   // const [profileImg, setProfileImg] = useState("");
 
   //Notification Code
@@ -34,12 +34,12 @@ function Signup() {
     });
   };
 
-  const error = () => {
-    messageApi.open({
-      type: 'error',
-      content: 'Something went wrong!',
-    });
-  };
+  // const error = () => {
+  //   messageApi.open({
+  //     type: 'error',
+  //     content: 'Something went wrong!',
+  //   });
+  // };
 
   //value is coming in console but...
   // const handleSubmit = async (values) => {
@@ -101,8 +101,8 @@ function Signup() {
                       ]}
                       hasFeedback>
                       <Input
-                        onChange={(e) => setUsername(e.target.value)}
-                        value={username}
+                        // onChange={(e) => setUsername(e.target.value)}
+                        // value={username}
                         // name={username}
                         className='formInput'
                         placeholder="username"
@@ -122,8 +122,8 @@ function Signup() {
                       hasFeedback>
                       <Input
                         htmltype='email'
-                        onChange={(e) => setEmail(e.target.value)}
-                        value={email}
+                        // onChange={(e) => setEmail(e.target.value)}
+                        // value={email}
                         // name={email}
                         className='formInput'
                         placeholder="email"
@@ -143,8 +143,8 @@ function Signup() {
                     ]}
                       hasFeedback>
                       <Input.Password
-                        onChange={(e) => setPassword(e.target.value)}
-                        value={password}
+                        // onChange={(e) => setPassword(e.target.value)}
+                        // value={password}
                         // name={password}
                         className='formInput'
                         placeholder="password"
@@ -169,8 +169,8 @@ function Signup() {
                       ]}
                       hasFeedback>
                       <Input.Password
-                        onChange={(e) => setConfirmPassword(e.target.value)}
-                        value={confirmPassword}
+                        // onChange={(e) => setConfirmPassword(e.target.value)}
+                        // value={confirmPassword}
                         // name={confirmPassword}
                         className='formInput'
                         placeholder="confirm password"
@@ -205,7 +205,8 @@ function Signup() {
                         },
                       ]}
                       hasFeedback>
-                      <Radio.Group onChange={(e) => setGender(e.target.value)} value={gender}
+                      <Radio.Group
+                      // onChange={(e) => setGender(e.target.value)} value={gender}
                       // name={gender} 
                       >
                         <Radio value="male"> Male </Radio>

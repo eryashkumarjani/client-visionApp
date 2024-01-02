@@ -1,17 +1,16 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import dayjs from 'dayjs';
-import { Layout, Space, Flex, Card, Breadcrumb, Form, Input, Upload, Button, Select, Table, Popconfirm, DatePicker } from 'antd';
-import { HomeOutlined, BookOutlined, LockOutlined, CloudUploadOutlined, FileImageOutlined, DeleteOutlined, EditOutlined } from '@ant-design/icons';
+import { Layout, Space, Flex, Breadcrumb, Form, Input, Upload, Button, Select, Table, Popconfirm, DatePicker } from 'antd';
+import { HomeOutlined, BookOutlined, FileImageOutlined, DeleteOutlined, EditOutlined } from '@ant-design/icons';
 import LHeader from '../../components/Header/LHeader';
 import LFooter from '../../components/Footer/LFooter';
-import FormItemInput from "antd/es/form/FormItemInput";
 import './AddFunds.scss';
 
 
-const { Header, Content, Footer } = Layout;
-const { Meta } = Card;
+const { Content } = Layout;
+// const { Meta } = Card;
 const { Option } = Select;
 
 const EditableCell = ({ editing, dataIndex, title, record, children, ...restProps }) => {
@@ -31,7 +30,7 @@ const EditableCell = ({ editing, dataIndex, title, record, children, ...restProp
 };
 
 function AddFunds() {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   //Editing Data in Form
   const [form] = Form.useForm();

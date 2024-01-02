@@ -1,12 +1,12 @@
 import { useNavigate } from "react-router-dom";
-import { Layout, Space, Flex, Card, Breadcrumb, Form, Input, Upload, Button } from 'antd';
-import { HomeOutlined, UserOutlined, FileImageOutlined, HeartOutlined, HeartFilled, WechatOutlined } from '@ant-design/icons';
+import { Layout, Space, Breadcrumb, Button } from 'antd';
+import { HomeOutlined } from '@ant-design/icons';
 import LHeader from '../../components/Header/LHeader';
 import './FundMonitor.scss';
 import LFooter from '../../components/Footer/LFooter';
 
-const { Header, Content, Footer } = Layout;
-const { Meta } = Card;
+const { Content } = Layout;
+// const { Meta } = Card;
 
 function FundMonitor() {
   const navigate = useNavigate();

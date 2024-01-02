@@ -1,12 +1,10 @@
 import { useNavigate } from "react-router-dom";
 import { Layout, Space, Flex, Card } from 'antd';
-import { Button } from 'antd';
 import LFooter from '../../components/Footer/LFooter';
 import './DashboardUser.scss';
 import LHeader from "../../components/Header/LHeader";
-import Users from "../Users/Users";
 
-const { Header, Content, Footer } = Layout;
+const { Content } = Layout;
 const { Meta } = Card;
 
 function DashboardUser() {

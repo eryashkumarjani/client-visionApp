@@ -1,15 +1,15 @@
-import { useNavigate } from "react-router-dom";
-import { Layout, Space, Flex, Card, Breadcrumb, Form, Input, Upload, Button } from 'antd';
-import { HomeOutlined, UserOutlined, FileImageOutlined, HeartOutlined, HeartFilled, WechatOutlined } from '@ant-design/icons';
+// import { useNavigate } from "react-router-dom";
+import { Layout, Space, Breadcrumb } from 'antd';
+import { HomeOutlined } from '@ant-design/icons';
 import LHeader from '../../components/Header/LHeader';
 import './PageNotFound.scss';
 import LFooter from '../../components/Footer/LFooter';
 
-const { Header, Content, Footer } = Layout;
-const { Meta } = Card;
+const { Content } = Layout;
+// const { Meta } = Card;
 
 function PageNotFound() {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   return (
     <>

@@ -11,7 +11,6 @@ import Home from './pages/Home/Home';
 import Signup from './pages/Signup/Signup';
 import Signin from './pages/Signin/Signin';
 import Dashboard from './pages/Dashboard/Dashboard';
-import Users from './pages/Users/Users';
 import ForgetPassword from './pages/ForgotPassword/ForgotPassword';
 import CreatePosts from './pages/CreatePosts/CreatePosts';
 import Approvals from './pages/AcceptApprovals/AcceptApprovals';
