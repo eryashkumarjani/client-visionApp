@@ -6,7 +6,8 @@ export const getAllProducts = createAsyncThunk(
   "getAllProducts",
   async () => {
     try {
-      const response = await axios.get("http://localhost:8080/api/v1/product/all-products");
+      const response = await axios.get("https://visionapp-backend.onrender.com/api/v1/product/all-products");
+      // const response = await axios.get("http://localhost:8080/api/v1/product/all-products");
       console.log("#Response", response);
       return response;
     } catch (error) {
@@ -21,7 +22,8 @@ export const addProduct = createAsyncThunk(
   async (formData) => {
     console.log("**************API O DATA**************", formData);
     try {
-      const response = await axios.post("http://localhost:8080/api/v1/product/add-product", formData);
+      const response = await axios.post("https://visionapp-backend.onrender.com/api/v1/product/add-product", formData);
+      // const response = await axios.post("http://localhost:8080/api/v1/product/add-product", formData);
       console.log("**************API I DATA**************", response);
       return response;
     } catch (error) {
