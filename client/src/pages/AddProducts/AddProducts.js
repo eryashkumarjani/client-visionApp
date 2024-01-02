@@ -165,7 +165,7 @@ function AddProducts() {
   //Load data in Table
   const loadDataInTable = async () => {
     setLoading(true);
-    const response = await axios.get("http://localhost:8080/api/v1/product/all-products");
+    const response = await axios.get("https://visionapp-backend.onrender.com/api/v1/product/all-products");
     setGridData(response.data.allProductsDetails);
     setLoading(false);
   }
