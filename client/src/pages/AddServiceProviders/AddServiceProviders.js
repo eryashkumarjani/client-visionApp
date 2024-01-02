@@ -165,7 +165,7 @@ function AddServiceProviders() {
   const loadDataInTable = async () => {
     setLoading(true);
     // const response = await axios.get("https://jsonplaceholder.typicode.com/comments");
-    const response = await axios.get("http://localhost:8080/api/v1/provider/all-providers");
+    const response = await axios.get("https://visionapp-backend.onrender.com/api/v1/provider/all-providers");
     setGridData(response.data.allProvidersDetails);
     console.log("#GridData", response.data);
     setLoading(false);
