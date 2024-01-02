@@ -1,0 +1,188 @@
+$layoutBgColor : #EFE1C7;
+$layoutButtonBgColor : #000000;
+$layoutWhiteColor : #FFFFFF;
+$layoutOrangeColor : #FF5300;
+
+//General dropdown Code Start
+div.ant-picker-dropdown {
+  margin-top: 100% !important;
+}
+
+//General dropdown Code End
+
+.ant-form-item {
+  margin-bottom: 0%;
+  width: 100%;
+}
+
+.mainLayout {
+  background-color: $layoutBgColor;
+  height: 100vh;
+
+  .layoutBtn {
+    background-color: $layoutButtonBgColor;
+    color: $layoutWhiteColor;
+
+    &:hover {
+      color: $layoutOrangeColor;
+      border-color: $layoutOrangeColor;
+      background-color: $layoutWhiteColor;
+    }
+  }
+
+  .mainHeader {
+    background-color: $layoutBgColor;
+    height: auto;
+    padding: 1.5rem;
+
+    .signupBtn {
+      @extend .layoutBtn;
+    }
+
+    .signinBtn {
+      @extend .layoutBtn;
+    }
+
+  }
+
+  .mainContent {
+    background-color: $layoutBgColor;
+
+    .mainContentArea {
+      height: 100%;
+      text-align: center;
+
+      .signUpForm {
+        width: 30%;
+        background-color: rgb(255 255 255 / 79%);
+        padding: 5px;
+        border-radius: 10px;
+
+        h1 {
+          margin-top: 0;
+          margin-bottom: 0.9rem;
+        }
+
+        .signUpFormArea {
+
+          .formInput {
+            width: 80%;
+            background-color: rgb(255 145 0 / 26%);
+
+            .ant-input {
+              background-color: rgb(255 145 0 / 1%);
+            }
+          }
+
+          .ant-picker {
+            width: 80%;
+            background-color: rgb(255 145 0 / 26%);
+
+            input {
+              background-color: rgb(255 145 0 / 1%);
+
+            }
+          }
+
+          .formRadio {
+            margin-left: 3.5rem;
+            margin-bottom: 0;
+          }
+
+          .formUpload {
+            width: 80%;
+            margin-bottom: 0;
+
+            .ant-upload {
+              width: 100%;
+              height: 60px;
+              background-color: rgb(255 145 0 / 15%);
+            }
+          }
+
+          .formButton {
+            @extend .layoutBtn;
+            margin-top: 0.5rem;
+            width: 80%;
+          }
+
+          .formLinks {
+            margin-bottom: 3rem;
+            margin-top: 1rem;
+
+            .googleIcon {
+              font-size: large;
+              margin-left: 0.2rem;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .mainFooter {
+    background-color: $layoutBgColor;
+    text-align: center;
+    font-weight: bold;
+  }
+}
+
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  .mainLayout {
+    .mainContent {
+      .mainContentArea {
+        .signUpForm {
+          width: 95%;
+          padding: 0px;
+        }
+      }
+    }
+  }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  .mainLayout {
+    .mainContent {
+      .mainContentArea {
+        .signUpForm {
+          width: 50%;
+          padding: 0px;
+        }
+      }
+    }
+  }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  .mainLayout {
+    .mainContent {
+      .mainContentArea {
+        .signUpForm {
+          width: 40%;
+          padding: 0px;
+        }
+      }
+    }
+  }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+  .mainLayout {
+    .mainContent {
+      .mainContentArea {
+        .signUpForm {
+          width: 30%;
+          padding: 0px;
+        }
+      }
+    }
+  }
+}

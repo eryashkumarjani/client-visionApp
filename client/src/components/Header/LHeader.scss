@@ -1,0 +1,31 @@
+$layoutBgColor : #EFE1C7;
+$layoutButtonBgColor : #000000;
+$layoutWhiteColor : #FFFFFF;
+$layoutOrangeColor : #FF5300;
+
+.mainLayout {
+   background-color: $layoutBgColor;
+   height: 100vh;
+
+   .layoutBtn {
+      background-color: $layoutButtonBgColor;
+      color: $layoutWhiteColor;
+
+      &:hover {
+         color: $layoutOrangeColor;
+         border-color: $layoutOrangeColor;
+         background-color: $layoutWhiteColor;
+      }
+   }
+
+   .mainHeader {
+      background-color: $layoutBgColor;
+      height: auto;
+      padding: 0.5rem;
+
+      .logoutBtn {
+         @extend .layoutBtn;
+      }
+
+   }
+}
