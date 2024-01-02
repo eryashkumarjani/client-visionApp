@@ -1,0 +1,127 @@
+$layoutBgColor : #EFE1C7;
+$layoutButtonBgColor : #000000;
+$layoutWhiteColor : #FFFFFF;
+$layoutOrangeColor : #FF5300;
+
+.addProducts {
+    width: 90%;
+    margin: 0% auto;
+    // height: 100%;
+    // display: flex;
+    // align-items: center;
+    // justify-content: center;
+
+    .breadcrumBg {
+        padding: 5px 10px;
+        background-color: white;
+        border: 1px solid #f0f0f0;
+        border-radius: 5px;
+        margin-bottom: 0.5rem;
+    }
+
+    .mainAddProductsContentArea {
+
+        h2 {
+            margin-bottom: 0.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .addProductsContainer {
+            // background-color: rgb(239 225 199);
+            background-color: white;
+            border-radius: 5px;
+            // padding: 5px;
+            padding: 10px;
+            // border: 3px solid white;
+            box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+
+            .addProductsFormArea {
+                display: flex;
+                flex-direction: row;
+                justify-content: flex-start;
+                align-items: center;
+
+                .formUpload {
+                    display: flex !important;
+                    gap: 8px;
+
+                    .ant-upload-list-item-container {
+
+                        .ant-upload-list-item {
+                            padding: 0px !important;
+                            height: 32px !important;
+                            margin-top: 0px !important;
+
+                            .ant-upload-list-item-thumbnail {
+                                width: 25px !important;
+                                height: 25px !important;
+                                margin-left: 3px;
+                                line-height: 0px !important;
+
+                                &>span {
+                                    font-size: 20px !important;
+                                }
+                            }
+
+                            .ant-progress .ant-progress-inner {
+                                vertical-align: bottom;
+                            }
+                        }
+                    }
+
+                }
+
+                .formButton {
+                    color: black;
+                    font-weight: 500;
+
+                    &:hover {
+                        font-weight: 600;
+                    }
+                }
+            }
+        }
+
+        .listOfProductsContainer {
+            background-color: white;
+            border-radius: 5px;
+            // padding: 5px 10px;
+
+            .ant-table-wrapper {
+                .ant-table-thead>tr>th {
+                    background: black !important;
+                    color: white !important;
+                    padding: 5px 10px !important;
+                    border-bottom: 2px solid #f0f0f0 !important;
+                }
+
+                .ant-table-body {
+                    border: 1px solid #00000024;
+                }
+
+                .ant-table-tbody>tr>td {
+                    padding: 2px 10px !important;
+                }
+
+                .ant-table-pagination.ant-pagination {
+                    margin: 6px !important;
+                }
+            }
+        }
+
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .addProducts .mainAddProductsContentArea .addProductsContainer .addProductsFormArea {
+        display: flex;
+        flex-wrap: wrap;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .addProducts .mainAddProductsContentArea .addProductsContainer .addProductsFormArea {
+        display: flex;
+        flex-wrap: wrap;
+    }
+}

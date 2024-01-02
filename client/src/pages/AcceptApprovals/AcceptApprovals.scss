@@ -1,0 +1,43 @@
+$layoutBgColor : #EFE1C7;
+$layoutButtonBgColor : #000000;
+$layoutWhiteColor : #FFFFFF;
+$layoutOrangeColor : #FF5300;
+
+.acceptApprovals {
+    width: 90%;
+    margin: 0% auto;
+    // height: 100%;
+    // display: flex;
+    // align-items: center;
+    // justify-content: center;
+
+    .breadcrumBg {
+        padding: 5px 10px;
+        background-color: white;
+        border: 1px solid #f0f0f0;
+        border-radius: 5px;
+        margin-bottom: 0.5rem;
+    }
+
+    .mainAcceptApprovalsContentArea {
+
+        h2 {
+            margin-bottom: 0.5rem;
+            margin-top: 0rem;
+        }
+
+        .acceptApprovalsContainer {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: white;
+            border-radius: 5px;
+            padding: 5px 10px;
+
+            img {
+                width: 30%;
+            }
+        }
+
+    }
+}

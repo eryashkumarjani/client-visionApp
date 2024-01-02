@@ -1,0 +1,209 @@
+$layoutBgColor : #EFE1C7;
+$layoutButtonBgColor : #000000;
+$layoutWhiteColor : #FFFFFF;
+$layoutOrangeColor : #FF5300;
+
+.homemadeProducts {
+    width: 90%;
+    margin: 0% auto;
+    // height: 100%;
+    // display: flex;
+    // align-items: center;
+    // justify-content: center;
+
+    .breadcrumBg {
+        padding: 5px 10px;
+        background-color: white;
+        border: 1px solid #f0f0f0;
+        border-radius: 5px;
+        margin-bottom: 0.5rem;
+    }
+
+    .mainHomemadeProductsContentArea {
+
+        h2 {
+            margin-bottom: 0.5rem;
+            margin-top: 0rem;
+        }
+
+        .homemadeProductsContainer {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            background-color: white;
+            border-radius: 5px;
+            padding: 10px;
+
+            .leftContainer {
+                width: 80%;
+                background-color: #e1e1e221;
+
+                .cartItemBox {
+                    width: 25%;
+                    margin-bottom: 0.5rem;
+                }
+
+                .ant-tabs-nav-list {
+                    padding: 10px !important;
+
+                    .ant-tabs-tab {
+                        padding: 5px 15px;
+                        box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 2.6px;
+                        border-radius: 20px;
+                        background-color: white;
+                    }
+                }
+
+                .ant-tabs-left>.ant-tabs-content-holder>.ant-tabs-content>.ant-tabs-tabpane {
+                    padding: 12px 24px !important;
+                }
+
+                .ant-card .ant-card-body {
+                    padding: 5px !important;
+                    text-align: center;
+                }
+            }
+
+            .rightContainer {
+                width: 19%;
+                box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 2.6px;
+                padding: 5px;
+
+                h4 {
+                    margin: 0px !important;
+                }
+
+                .shoppingCartBox {
+                    .ant-card-body {
+                        padding: 5px !important;
+
+                        .startCart {
+                            display: flex;
+                            justify-content: space-around;
+                            align-items: center;
+
+                            h5 {
+                                margin: 0px !important;
+                            }
+                        }
+
+                        .endCard {
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+
+                            .quantity {
+                                display: flex;
+                                align-items: center;
+                            }
+
+                            .price {
+                                padding: 0px 10px;
+
+                                &>b {
+                                    margin: 0px 20px;
+                                }
+                            }
+                        }
+                    }
+
+                }
+
+                .totalAmount {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-around;
+
+                    .totalQ {
+                        p {
+                            margin: 0px !important;
+                        }
+
+                        span {
+                            color: rgba(0, 0, 0, 0.493);
+                        }
+                    }
+                }
+
+                .checkItOut {
+                    width: 100%;
+                    background-color: rgba(0, 128, 0, 0.753);
+                    color: white;
+
+                    &:hover {
+                        background-color: white;
+                        color: rgba(0, 128, 0, 0.753);
+                        border-color: rgba(0, 128, 0, 0.753);
+                    }
+                }
+
+                .emptyCartBox {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+
+                    img {
+                        width: 75%;
+                    }
+                }
+
+            }
+        }
+
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .homemadeProducts .mainHomemadeProductsContentArea .homemadeProductsContainer .leftContainer {
+        width: 100%;
+
+        .cartItemBox {
+            width: 100%;
+        }
+
+        .ant-tabs-left>.ant-tabs-content-holder>.ant-tabs-content>.ant-tabs-tabpane {
+            padding: 6px 12px !important;
+        }
+    }
+
+    .homemadeProducts .mainHomemadeProductsContentArea .homemadeProductsContainer .rightContainer {
+        width: 100%;
+    }
+}
+
+//   /* Medium devices (landscape tablets, 768px and up) */
+@media (min-width: 601px) and (max-width: 768px) {
+    .homemadeProducts .mainHomemadeProductsContentArea .homemadeProductsContainer .leftContainer {
+        width: 70%;
+
+        .cartItemBox {
+            width: 49%;
+        }
+
+        .ant-tabs-left>.ant-tabs-content-holder>.ant-tabs-content>.ant-tabs-tabpane {
+            padding: 6px 12px !important;
+        }
+    }
+
+    .homemadeProducts .mainHomemadeProductsContentArea .homemadeProductsContainer .rightContainer {
+        width: 30%;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1066px) {
+    .homemadeProducts .mainHomemadeProductsContentArea .homemadeProductsContainer .leftContainer {
+        width: 70%;
+
+        .cartItemBox {
+            width: 30%;
+        }
+
+        .ant-tabs-left>.ant-tabs-content-holder>.ant-tabs-content>.ant-tabs-tabpane {
+            padding: 6px 12px !important;
+        }
+    }
+
+    .homemadeProducts .mainHomemadeProductsContentArea .homemadeProductsContainer .rightContainer {
+        width: 30%;
+    }
+}

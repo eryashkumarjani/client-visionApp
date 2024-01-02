@@ -1,0 +1,94 @@
+$layoutBgColor : #EFE1C7;
+$layoutButtonBgColor : #000000;
+$layoutWhiteColor : #FFFFFF;
+$layoutOrangeColor : #FF5300;
+
+.reviewTicket {
+    width: 90%;
+    margin: 0% auto;
+    // height: 100%;
+    // display: flex;
+    // align-items: center;
+    // justify-content: center;
+
+    .breadcrumBg {
+        padding: 5px 10px;
+        background-color: white;
+        border: 1px solid #f0f0f0;
+        border-radius: 5px;
+        margin-bottom: 0.5rem;
+    }
+
+    .mainReviewTicketContentArea {
+
+        h2 {
+            margin-bottom: 0.5rem;
+            margin-top: 0rem;
+        }
+
+        .reviewTicketContainer {
+            .colWidth {
+                width: 25%;
+            }
+
+            .insideColumn {
+                // display: flex;
+                // align-items: center;
+                // justify-content: center;
+                // flex-wrap: wrap;
+                background-color: white;
+                border-radius: 5px;
+                padding: 5px 10px;
+                // margin: 5px;
+                box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 2.6px;
+
+                .profileImg {
+                    // width: 20%;
+                    text-align: center;
+                    padding: 5px;
+
+                    img {
+                        width: 50%;
+                    }
+
+                    h2 {
+                        margin: 0;
+                    }
+                }
+
+                .profileMsg {
+                    // width: 80%;
+                    padding: 5px;
+                    display: flex;
+                    flex-direction: column;
+
+                    p {
+                        text-align: left;
+                        margin-top: 0;
+                    }
+
+                    .chatBtn {
+                        width: 100%;
+                        text-align: center;
+                        border-radius: 5px;
+                        padding: 5px;
+                        border: 1px solid #1677ff;
+                    }
+                }
+            }
+        }
+
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .reviewTicket .mainReviewTicketContentArea .reviewTicketContainer .colWidth {
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .reviewTicket .mainReviewTicketContentArea .reviewTicketContainer .colWidth {
+        width: 30%;
+    }
+}

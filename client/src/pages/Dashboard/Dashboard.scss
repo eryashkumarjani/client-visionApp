@@ -1,0 +1,75 @@
+.mainDashboardContent {
+    width: 69%;
+    margin: 0% auto;
+    // height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .cardContent {
+        text-align: center;
+        margin-bottom: 10px;
+
+        .ant-card-cover {
+            width: 100%;
+            padding-top: 30px;
+            padding-bottom: 10px;
+
+            &>img {
+                width: 50px;
+                display: inline-block;
+            }
+        }
+
+        .ant-card-body {
+            padding: 0px 10px 10px;
+        }
+    }
+
+}
+
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+    .mainDashboardContent {
+        width: 69%;
+        margin: 0% auto;
+        // height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    
+        .cardContent {
+            text-align: center;
+            margin-bottom: 10px;
+    
+            .ant-card-cover {
+                width: 100%;
+                padding-top: 10px;
+                padding-bottom: 0px;
+    
+                &>img {
+                    width: 50px;
+                    display: inline-block;
+                }
+            }
+    
+            .ant-card-body {
+                padding: 0px 10px 10px;
+            }
+        }
+    
+    }
+  }
+  
+//   /* Small devices (portrait tablets and large phones, 600px and up) */
+//   @media only screen and (min-width: 600px) {}
+  
+//   /* Medium devices (landscape tablets, 768px and up) */
+//   @media only screen and (min-width: 768px) {  }
+  
+//   /* Large devices (laptops/desktops, 992px and up) */
+//   @media only screen and (min-width: 992px) {  }
+  
+//   /* Extra large devices (large laptops and desktops, 1200px and up) */
+//   @media only screen and (min-width: 1200px) {  }
