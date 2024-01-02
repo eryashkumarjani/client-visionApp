@@ -1,19 +1,18 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import dayjs from 'dayjs';
-import { Layout, Space, Flex, Card, Breadcrumb, Form, Input, Upload, Button, Select, Table, Popconfirm, DatePicker, message } from 'antd';
-import { HomeOutlined, BookOutlined, LockOutlined, CloudUploadOutlined, FileImageOutlined, DeleteOutlined, PhoneOutlined, EditOutlined, ScheduleOutlined } from '@ant-design/icons';
+import { Layout, Space, Flex, Breadcrumb, Form, Input, Upload, Button, Select, Table, Popconfirm, DatePicker, message } from 'antd';
+import { HomeOutlined, BookOutlined, FileImageOutlined, DeleteOutlined, PhoneOutlined, EditOutlined, ScheduleOutlined } from '@ant-design/icons';
 import LHeader from '../../components/Header/LHeader';
 import LFooter from '../../components/Footer/LFooter';
-import FormItemInput from "antd/es/form/FormItemInput";
 import './RaiseTicket.scss';
 import { useDispatch } from "react-redux";
-import { addTicket, getAllTickets } from "../../features/ticketDetailsSlice";
+import { addTicket } from "../../features/ticketDetailsSlice";
 import moment from 'moment';
 
-const { Header, Content, Footer } = Layout;
-const { Meta } = Card;
+const { Content } = Layout;
+// const { Meta } = Card;
 const { Option } = Select;
 
 const EditableCell = ({ editing, dataIndex, title, record, children, ...restProps }) => {
@@ -33,7 +32,7 @@ const EditableCell = ({ editing, dataIndex, title, record, children, ...restProp
 };
 
 function RaiseTicket() {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const dispatch = useDispatch();
 
   //Editing Data in Form
@@ -98,7 +97,7 @@ function RaiseTicket() {
       width: 70,
       render: (_, record) => {
         return modifiedData.length >= 1 ? (
-          <img src={record.ticketIssueProofImage} width={50} />
+          <img src={record.ticketIssueProofImage} alt="ticket img" width={50} />
         ) : null;
       }
     },
@@ -226,12 +225,12 @@ function RaiseTicket() {
     });
   };
 
-  const error = () => {
-    messageApi.open({
-      type: 'error',
-      content: 'Something went wrong!',
-    });
-  };
+  // const error = () => {
+  //   messageApi.open({
+  //     type: 'error',
+  //     content: 'Something went wrong!',
+  //   });
+  // };
 
 
   //value is coming in console but...
@@ -252,13 +251,13 @@ function RaiseTicket() {
     }
     catch (error) {
       console.warn("#Error", error);
-      error(error);
+      // error(error);
     }
 
   }
 
   // useEffect(() => {
-  //   dispatch(getAllTickets());
+  //   dispatc());
   // }, [dispatch]);
 
 

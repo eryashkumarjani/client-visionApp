@@ -3,10 +3,10 @@ import './Signin.scss';
 import { Layout, Space, Flex, Input, Button, Form, message } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import LFooter from '../../components/Footer/LFooter';
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useFirebase } from "../../context/Firebase";
 
-const { Header, Content, Footer } = Layout;
+const { Header, Content } = Layout;
 
 function Signin() {
   const navigate = useNavigate();
@@ -26,12 +26,12 @@ function Signin() {
     });
   };
 
-  const error = () => {
-    messageApi.open({
-      type: 'error',
-      content: 'Something went wrong!',
-    });
-  };
+  // const error = () => {
+  //   messageApi.open({
+  //     type: 'error',
+  //     content: 'Something went wrong!',
+  //   });
+  // };
 
   const handleSubmit = async (e) => {
     // e.preventDefault();
@@ -59,7 +59,7 @@ function Signin() {
     }
     catch (error) {
       console.warn("#Signin Error", error);
-      error(error);
+      // error(error);
     }
   }
 

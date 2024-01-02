@@ -1,18 +1,17 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
-import { Layout, Space, Flex, Card, Breadcrumb, Form, Input, Upload, Button, Select, Table, Popconfirm, message } from 'antd';
-import { HomeOutlined, BookOutlined, LockOutlined, CloudUploadOutlined, FileImageOutlined, DeleteOutlined, EditOutlined } from '@ant-design/icons';
+// import { useNavigate } from "react-router-dom";
+import { Layout, Space, Flex, Breadcrumb, Form, Input, Upload, Button, Select, Table, Popconfirm, message } from 'antd';
+import { HomeOutlined, BookOutlined, FileImageOutlined, DeleteOutlined, EditOutlined } from '@ant-design/icons';
 import LHeader from '../../components/Header/LHeader';
 import LFooter from '../../components/Footer/LFooter';
-import FormItemInput from "antd/es/form/FormItemInput";
 import './AddProducts.scss';
 import { useDispatch } from "react-redux";
 import { addProduct, getAllProducts } from "../../features/productDetailsSlice";
 
 
-const { Header, Content, Footer } = Layout;
-const { Meta } = Card;
+const { Content } = Layout;
+// const { Meta } = Card;
 const { Option } = Select;
 
 const EditableCell = ({ editing, dataIndex, title, record, children, ...restProps }) => {
@@ -32,7 +31,7 @@ const EditableCell = ({ editing, dataIndex, title, record, children, ...restProp
 };
 
 function AddProducts() {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const dispatch = useDispatch();
 
   //Editing Data in Form
@@ -97,7 +96,7 @@ function AddProducts() {
       width: 150,
       render: (_, record) => {
         return modifiedData.length >= 1 ? (
-          <img src={record.productImage} width={50} />
+          <img src={record.productImage} alt="product img" width={50} />
         ) : null;
       }
     },
@@ -217,12 +216,12 @@ function AddProducts() {
     });
   };
 
-  const error = () => {
-    messageApi.open({
-      type: 'error',
-      content: 'Something went wrong!',
-    });
-  };
+  // const error = () => {
+  //   messageApi.open({
+  //     type: 'error',
+  //     content: 'Something went wrong!',
+  //   });
+  // };
 
 
   //value is coming in console but...
@@ -239,7 +238,7 @@ function AddProducts() {
     }
     catch (error) {
       console.warn("#Error", error);
-      error(error);
+      // error(error);
     }
 
   }

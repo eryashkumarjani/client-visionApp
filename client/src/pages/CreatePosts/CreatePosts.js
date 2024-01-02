@@ -1,18 +1,16 @@
-import { useNavigate } from "react-router-dom";
-import { Layout, Space, Flex, Card, Breadcrumb, Form, Input, Upload, Button, Spin } from 'antd';
-import { HomeOutlined, UserOutlined, FileImageOutlined, HeartOutlined, HeartFilled, WechatOutlined } from '@ant-design/icons';
+import { Layout, Space, Breadcrumb, Form, Input, Upload, Button } from 'antd';
+import { HomeOutlined, FileImageOutlined, HeartFilled, WechatOutlined } from '@ant-design/icons';
 import LHeader from '../../components/Header/LHeader';
 import './CreatePosts.scss';
 import LFooter from '../../components/Footer/LFooter';
 import { useSelector, useDispatch } from 'react-redux';
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { createPost, getAllPosts } from "../../features/postDetailsSlice";
 
-const { Header, Content, Footer } = Layout;
-const { Meta } = Card;
+const { Content } = Layout;
 
 function CreatePosts() {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const dispatch = useDispatch();
 
   // const [postDescription, setPostDescription] = useState(null);
@@ -108,7 +106,7 @@ function CreatePosts() {
                           </div>
                           <div className="postContent">
                             <p key={index} > {el.postDescription} </p>
-                            <img src={el.postUploadImage} />
+                            <img src={el.postUploadImage} alt="post img" />
                           </div>
                           <div className="postFooter">
                             {/* <HeartOutlined /> */}

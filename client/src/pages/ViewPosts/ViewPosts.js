@@ -1,18 +1,15 @@
-import { useNavigate } from "react-router-dom";
-import { Layout, Space, Flex, Card, Breadcrumb, Form, Input, Upload, Button, Spin } from 'antd';
-import { HomeOutlined, UserOutlined, FileImageOutlined, HeartOutlined, HeartFilled, WechatOutlined } from '@ant-design/icons';
+import { Layout, Space, Breadcrumb } from 'antd';
+import { HomeOutlined, HeartFilled, WechatOutlined } from '@ant-design/icons';
 import LHeader from '../../components/Header/LHeader';
 import './ViewPosts.scss';
 import LFooter from '../../components/Footer/LFooter';
 import { useSelector, useDispatch } from 'react-redux';
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { getAllPosts } from "../../features/postDetailsSlice";
 
-const { Header, Content, Footer } = Layout;
-const { Meta } = Card;
+const { Content } = Layout;
 
 function ViewPosts() {
-  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const postData = useSelector((state) => state.post);
@@ -52,13 +49,13 @@ function ViewPosts() {
                       postData?.posts?.data?.allPostDetails.map((el, index) => (
                         <div className="viewPosts">
                           <div className="postHeader" >
-                            <img src={process.env.PUBLIC_URL + '/profile.png'} alt='logo' width={25} />
+                            <img src={process.env.PUBLIC_URL + '/profile.png'} alt='user logo' width={25} />
                             <h5> Yashkumar Jani</h5>
                             <span> 1 day ago.</span>
                           </div>
                           <div className="postContent">
                             <p key={index} > {el.postDescription} </p>
-                            <img src={el.postUploadImage} />
+                            <img src={el.postUploadImage} alt='post' />
                           </div>
                           <div className="postFooter">
                             {/* <HeartOutlined /> */}

@@ -1,10 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import { useFirebase, firestore } from "../../context/Firebase";
-import { Layout, Space, Flex } from 'antd';
+import { Layout, Flex } from 'antd';
 import { Button } from 'antd';
-import LFooter from '../../components/Footer/LFooter';
 import './LHeader.scss';
-import { useEffect, useState } from "react";
 import { doc, getDoc } from "firebase/firestore";
 
 const docRef = doc(firestore, "profiles", "AZwiswgmHfZqvtJ2oJYN");
@@ -16,7 +14,7 @@ if (docSnap.exists()) {
   // docSnap.data() will be undefined in this case
   console.log("No such document!");
 }
-const { Header, Content, Footer } = Layout;
+const { Header } = Layout;
 
 function LHeader() {
   const navigate = useNavigate();

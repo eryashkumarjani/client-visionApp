@@ -1,12 +1,12 @@
 import './ForgotPassword.scss';
 import { useNavigate } from "react-router-dom";
 import { Layout, Space, Flex, Input, Button, Form } from 'antd';
-import { UserOutlined, LockOutlined } from '@ant-design/icons';
+import { UserOutlined } from '@ant-design/icons';
 import LFooter from '../../components/Footer/LFooter';
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useFirebase } from "../../context/Firebase";
 
-const { Header, Content, Footer } = Layout;
+const { Header, Content } = Layout;
 
 function ForgotPassword() {
   const navigate = useNavigate();

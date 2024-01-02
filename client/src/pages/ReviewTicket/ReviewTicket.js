@@ -1,6 +1,6 @@
-import { useNavigate } from "react-router-dom";
-import { Layout, Space, Flex, Card, Breadcrumb, Form, Input, Upload, Button, Row, Col } from 'antd';
-import { HomeOutlined, UserOutlined, FileImageOutlined, HeartOutlined, HeartFilled, WechatOutlined } from '@ant-design/icons';
+// import { useNavigate } from "react-router-dom";
+import { Layout, Space, Breadcrumb, Row, Col } from 'antd';
+import { HomeOutlined } from '@ant-design/icons';
 import LHeader from '../../components/Header/LHeader';
 import './ReviewTicket.scss';
 import LFooter from '../../components/Footer/LFooter';
@@ -8,11 +8,11 @@ import { useEffect } from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import { getAllTickets } from "../../features/ticketDetailsSlice";
 
-const { Header, Content, Footer } = Layout;
-const { Meta } = Card;
+const { Content } = Layout;
+// const { Meta } = Card;
 
 function ReviewTicket() {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const ticketData = useSelector((state) => state.ticket);
