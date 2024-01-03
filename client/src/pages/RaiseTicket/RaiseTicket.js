@@ -1,18 +1,16 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-// import { useNavigate } from "react-router-dom";
 import dayjs from 'dayjs';
-import { Layout, Space, Flex, Breadcrumb, Form, Input, Upload, Button, Select, Table, Popconfirm, DatePicker, message } from 'antd';
+import { useDispatch } from "react-redux";
+import { addTicket } from "../../features/ticketDetailsSlice";
+import moment from 'moment';
+import { Layout, Space, Flex, Breadcrumb, Form, Input, Upload, Button, Select, Table, Popconfirm, DatePicker, notification } from 'antd';
 import { HomeOutlined, BookOutlined, FileImageOutlined, DeleteOutlined, PhoneOutlined, EditOutlined, ScheduleOutlined } from '@ant-design/icons';
 import LHeader from '../../components/Header/LHeader';
 import LFooter from '../../components/Footer/LFooter';
 import './RaiseTicket.scss';
-import { useDispatch } from "react-redux";
-import { addTicket } from "../../features/ticketDetailsSlice";
-import moment from 'moment';
 
 const { Content } = Layout;
-// const { Meta } = Card;
 const { Option } = Select;
 
 const EditableCell = ({ editing, dataIndex, title, record, children, ...restProps }) => {
@@ -32,7 +30,7 @@ const EditableCell = ({ editing, dataIndex, title, record, children, ...restProp
 };
 
 function RaiseTicket() {
-  // const navigate = useNavigate();
+  const [api, contextHolder] = notification.useNotification();
   const dispatch = useDispatch();
 
   //Editing Data in Form
@@ -193,7 +191,7 @@ function RaiseTicket() {
   //Delete Function
   const handleDelete = (value) => {
     const dataSource = [...modifiedData];
-    const filteredData = dataSource.filter((item) => item.id !== value.id);
+    const filteredData = dataSource.filter((item) => item._id !== value._id);
     setGridData(filteredData);
   };
 
@@ -215,54 +213,35 @@ function RaiseTicket() {
   });
 
   //value is coming in console but...
-  //Notification Code
-  const [messageApi, contextHolder] = message.useMessage();
-
-  const success = () => {
-    messageApi.open({
-      type: 'success',
-      content: 'Provider is added Successfully',
-    });
-  };
-
-  // const error = () => {
-  //   messageApi.open({
-  //     type: 'error',
-  //     content: 'Something went wrong!',
-  //   });
-  // };
-
-
-  //value is coming in console but...
   const handleSubmit = (values) => {
     try {
-      console.log({ values });
       const formData = new FormData();
       formData.append('ticketTitle', values.ticketTitle);
       formData.append('ticketType', values.ticketType);
-      // formData.append('dateOfRaisedTicket', values.dateOfRaisedTicket);
-      // formData.append('dateOfRaisedTicket', moment(values.dateOfRaisedTicket[0]).format('DD-MM-YYYY'));
       formData.append('dateOfRaisedTicket', moment(values.dateOfRaisedTicket).format('DD-MM-YYYY'));
       formData.append('ticketDescription', values.ticketDescription);
       formData.append('phoneNumberOfUser', values.phoneNumberOfUser);
       formData.append('ticketIssueProofImage', values.ticketIssueProofImage.file.originFileObj);
       dispatch(addTicket(formData));
-      success();
+      api['success']({
+        message: 'Success',
+        description:
+          'Ticket has been raised successfully',
+      });
+      window.location.reload(false);
     }
     catch (error) {
-      console.warn("#Error", error);
-      // error(error);
+      api['error']({
+        message: 'Error',
+        description:
+          'Something went wrong!',
+      });
     }
-
   }
-
-  // useEffect(() => {
-  //   dispatc());
-  // }, [dispatch]);
-
 
   return (
     <>
+      {contextHolder}
       <Space direction="vertical" style={{ width: '100%' }} size={[0, 48]}>
         <Layout className='mainLayout'>
           <LHeader />
@@ -307,13 +286,7 @@ function RaiseTicket() {
                       <DatePicker
                         picker="date"
                         className='formDate'
-                        // onChange={(e) => setDob(e.target.value)}
                         defaultValue={dayjs('01/01/2023', 'DD/MM/YYYY')} format={"DD/MM/YYYY"}
-                      // onChange={(date, dateString) => {
-                      //   console.log(dateString); setDob(date, dateString);
-                      // }}
-                      // value={dob}
-                      // name={dob} 
                       />
                     </Form.Item>
 
@@ -336,8 +309,6 @@ function RaiseTicket() {
                         action="/upload.do"
                         listType="picture"
                         maxCount={1}
-                        // onChange={(e) => setPostImage(e.target.files[0])}
-                        // value={postImage}
                         multiple
                         className="formUpload"
                       >
@@ -357,7 +328,6 @@ function RaiseTicket() {
               <div className="listOfRaiseTicketContainer">
                 <Form form={form} component={false}>
                   <Table
-                    // columns={columns}
                     columns={mergeColumns}
                     components={{
                       body: {
@@ -365,7 +335,6 @@ function RaiseTicket() {
                       },
                     }}
                     dataSource={modifiedData}
-                    // bordered
                     loading={loading}
                     scroll={{
                       y: 200,

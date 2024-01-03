@@ -1,15 +1,14 @@
-import { Layout, Space, Flex, Breadcrumb, Form, Input, Upload, Button, Select, Popconfirm, Table, message } from 'antd';
-import { HomeOutlined, UserOutlined, FileImageOutlined, DeleteOutlined, EditOutlined, PhoneOutlined, EnvironmentOutlined } from '@ant-design/icons';
-import LHeader from '../../components/Header/LHeader';
-import './AddServiceProviders.scss';
-import LFooter from '../../components/Footer/LFooter';
 import { useEffect, useState } from "react";
 import { useDispatch } from 'react-redux';
 import axios from "axios";
 import { addProvider, getAllProviders } from "../../features/providerDetailsSlice";
+import { Layout, Space, Flex, Breadcrumb, Form, Input, Upload, Button, Select, Popconfirm, Table, notification } from 'antd';
+import { HomeOutlined, UserOutlined, FileImageOutlined, DeleteOutlined, EditOutlined, PhoneOutlined, EnvironmentOutlined } from '@ant-design/icons';
+import LHeader from '../../components/Header/LHeader';
+import LFooter from '../../components/Footer/LFooter';
+import './AddServiceProviders.scss';
 
 const { Content } = Layout;
-// const { Meta } = Card;
 const { Option } = Select;
 
 const EditableCell = ({ editing, dataIndex, title, record, children, ...restProps }) => {
@@ -29,8 +28,8 @@ const EditableCell = ({ editing, dataIndex, title, record, children, ...restProp
 };
 
 function AddServiceProviders() {
-  // const navigate = useNavigate();
   const dispatch = useDispatch();
+  const [api, contextHolder] = notification.useNotification();
 
   //Editing Data in Form
   const [form] = Form.useForm();
@@ -185,7 +184,7 @@ function AddServiceProviders() {
   //Delete Function
   const handleDelete = (value) => {
     const dataSource = [...modifiedData];
-    const filteredData = dataSource.filter((item) => item.id !== value.id);
+    const filteredData = dataSource.filter((item) => item._id !== value._id);
     setGridData(filteredData);
   };
 
@@ -206,28 +205,9 @@ function AddServiceProviders() {
     }
   });
 
-  //Notification Code
-  const [messageApi, contextHolder] = message.useMessage();
-
-  const success = () => {
-    messageApi.open({
-      type: 'success',
-      content: 'Provider is added Successfully',
-    });
-  };
-
-  // const error = () => {
-  //   messageApi.open({
-  //     type: 'error',
-  //     content: 'Something went wrong!',
-  //   });
-  // };
-
-
   //value is coming in console but...
   const handleSubmit = (values) => {
     try {
-      console.log({ values });
       const formData = new FormData();
       formData.append('providerName', values.providerName);
       formData.append('providerNumber', values.providerNumber);
@@ -235,14 +215,20 @@ function AddServiceProviders() {
       formData.append('providerLocation', values.providerLocation);
       formData.append('providerImage', values.providerImage.file.originFileObj);
       dispatch(addProvider(formData));
-      success();
+      api['success']({
+        message: 'Success',
+        description:
+          'Provider has been added successfully',
+      });
+      window.location.reload(false);
     }
     catch (error) {
-      console.warn("#Error", error);
-      // error(error);
+      api['error']({
+        message: 'Error',
+        description:
+          'Something went wrong!',
+      });
     }
-
-
   }
 
   useEffect(() => {
@@ -250,6 +236,7 @@ function AddServiceProviders() {
   }, [dispatch]);
   return (
     <>
+      {contextHolder}
       <Space direction="vertical" style={{ width: '100%' }} size={[0, 48]}>
         <Layout className='mainLayout'>
           <LHeader />

@@ -1,74 +1,42 @@
 import { Link, useNavigate } from "react-router-dom";
 import './Signin.scss';
-import { Layout, Space, Flex, Input, Button, Form, message } from 'antd';
+import { Layout, Space, Flex, Input, Button, Form, notification } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import LFooter from '../../components/Footer/LFooter';
-import { useState } from "react";
 import { useFirebase } from "../../context/Firebase";
 
 const { Header, Content } = Layout;
 
 function Signin() {
   const navigate = useNavigate();
-
   const firebase = useFirebase();
+  const [api, contextHolder] = notification.useNotification();
 
-  //Notification Code
-  const [messageApi, contextHolder] = message.useMessage();
-
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-
-  const success = () => {
-    messageApi.open({
-      type: 'success',
-      content: 'User is Logged in Successfully',
-    });
-  };
-
-  // const error = () => {
-  //   messageApi.open({
-  //     type: 'error',
-  //     content: 'Something went wrong!',
-  //   });
-  // };
-
-  const handleSubmit = async (e) => {
-    // e.preventDefault();
+  const handleSubmit = async (values) => {
     try {
-      console.log("#Logining the User.")
-      await firebase.loginUserWithEmailAndPassword(email, password);
-      success();
-      console.log("#User is Loggedin");
-      setEmail("");
-      setPassword("");
-
+      await firebase.loginUserWithEmailAndPassword(values.email, values.password);
+      api['success']({
+        message: 'Success',
+        description:
+          'User is logged in successfully',
+      });
       if (firebase.isLoggedIn && firebase.isAdmin) {
         navigate('/dashboard');
-
         console.log("#Admin", firebase.isAdmin)
       }
-
       if (firebase.isLoggedIn && !firebase.isAdmin) {
         navigate('/dashboardUser');
         console.log("#NotanAdmin", firebase.isAdmin)
-
       }
-
-      // navigate('/dashboard');
     }
     catch (error) {
-      console.warn("#Signin Error", error);
-      // error(error);
+      api['error']({
+        message: 'Error',
+        description:
+          'Something went wrong!',
+      });
     }
   }
-
-  // useEffect(() => {
-  //   // if (firebase.isLoggedIn) {
-  //   //   navigate('/dashboard');
-  //   // }
-
-  // }, [firebase, navigate]);
 
   return (
     <div className="App">
@@ -100,8 +68,7 @@ function Signin() {
                         },
                       ]}
                       hasFeedback>
-                      <Input onChange={(e) => setEmail(e.target.value)}
-                        value={email}
+                      <Input
                         className='formInput'
                         placeholder="Email"
                         prefix={<UserOutlined />} />
@@ -113,8 +80,7 @@ function Signin() {
                       }, { min: 6 },
                     ]}
                       hasFeedback>
-                      <Input.Password onChange={(e) => setPassword(e.target.value)}
-                        value={password}
+                      <Input.Password
                         className='formInput'
                         placeholder="password"
                         prefix={<LockOutlined />} />

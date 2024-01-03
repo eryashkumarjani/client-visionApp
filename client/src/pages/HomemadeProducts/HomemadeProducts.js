@@ -39,7 +39,7 @@ function HomemadeProducts() {
   }, [allCart, dispatch]);
 
   const checkouthandler = async (totalPrice) => {
-    const { data: { order } } = await axios.post("http://localhost:8080/api/v1/razorpay/checkout", { totalPrice })
+    const { data: { order } } = await axios.post("https://visionapp-backend.onrender.com/api/v1/razorpay/checkout", { totalPrice })
     console.log(window);
     const options = {
       key: "rzp_test_CLCb3MHpT7PJRC",
@@ -49,7 +49,7 @@ function HomemadeProducts() {
       description: "Razorpay tutorial",
       image: "https://media.licdn.com/dms/image/D4D03AQG9pYZy3A0FJQ/profile-displayphoto-shrink_200_200/0/1698504476531?e=2147483647&v=beta&t=R7rIJLCYeprEwZqlgWugwQr0yTAwF71ds9oO_VKiqI8",
       order_id: order.id,
-      callback_url: "http://localhost:8080/api/v1/razorpay/payment-verification",
+      callback_url: "https://visionapp-backend.onrender.com/api/v1/razorpay/payment-verification",
       prefill: {
         name: "Yashkumar Jani",
         email: "eryashkumarjani@gmail.com",
@@ -123,22 +123,22 @@ function HomemadeProducts() {
                       ) : null}
                     </Tabs.TabPane>
                     <Tabs.TabPane tab="Pottery" key="tab2">
-                      <p> Tab 2</p>
+                      <p> No Data...</p>
                     </Tabs.TabPane>
                     <Tabs.TabPane tab="Leather" key="tab3">
-                      <p> Tab 3</p>
+                      <p> No Data...</p>
                     </Tabs.TabPane>
                     <Tabs.TabPane tab="Jute" key="tab4">
-                      <p> Tab 4</p>
+                      <p> No Data...</p>
                     </Tabs.TabPane>
                     <Tabs.TabPane tab="Shell" key="tab5">
-                      <p> Tab 5</p>
+                      <p> No Data...</p>
                     </Tabs.TabPane>
                     <Tabs.TabPane tab="Phulkaris" key="tab6">
-                      <p> Tab 6</p>
+                      <p> No Data...</p>
                     </Tabs.TabPane>
                     <Tabs.TabPane tab="Zardozi" key="tab7">
-                      <p> Tab 7</p>
+                      <p> No Data...</p>
                     </Tabs.TabPane>
                   </Tabs>
                 </div>

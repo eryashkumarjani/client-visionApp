@@ -1,82 +1,35 @@
+import { useFirebase } from "../../context/Firebase";
 import { useNavigate } from "react-router-dom";
-import './Signup.scss';
-import { Layout, Space, Flex, Input, Button, Radio, Form, Upload, DatePicker, message } from 'antd';
 import dayjs from 'dayjs';
+import moment from 'moment';
+import { Layout, Space, Flex, Input, Button, Radio, Form, Upload, DatePicker } from 'antd';
 import { UserOutlined, LockOutlined, MailOutlined, CloudUploadOutlined, GoogleOutlined } from '@ant-design/icons';
 import LFooter from '../../components/Footer/LFooter';
-import { useFirebase } from "../../context/Firebase";
-// import { useState } from "react";
-import moment from 'moment';
+import './Signup.scss';
 
 const { Header, Content } = Layout;
 
 function Signup() {
   const navigate = useNavigate();
-
   const firebase = useFirebase();
 
-  //Notification Code
-  const [messageApi, contextHolder] = message.useMessage();
-
-  // const [username, setUsername] = useState("");
-  // const [email, setEmail] = useState("");
-  // const [password, setPassword] = useState("");
-  // const [confirmPassword, setConfirmPassword] = useState("");
-  // const [dob, setDob] = useState("");
-  // const [gender, setGender] = useState("");
-  // const [profileImg, setProfileImg] = useState("");
-
-  //Notification Code
-  const success = () => {
-    messageApi.open({
-      type: 'success',
-      content: 'User is Registered Successfully',
-    });
-  };
-
-  // const error = () => {
-  //   messageApi.open({
-  //     type: 'error',
-  //     content: 'Something went wrong!',
-  //   });
-  // };
-
-  //value is coming in console but...
-  // const handleSubmit = async (values) => {
-  //   console.log({values});
-  //  }
-
   const handleSubmit = async (values) => {
-    console.log("#SignUp Values :- ", values)
-    // console.log("#SignUp DOB :- ", moment(values.dob[0]).format('DD-MM-YYYY'));
-    // e.preventDefault();
-    // try {
-    console.log("#Registering the User.")
-    //Below code will register the user details
-    await firebase.registerUserDetails(values.username, values.email, values.password, moment(values.dob[0]).format('DD-MM-YYYY'), values.gender, values.profileImage.file.originFileObj);
-
-    //Below code will register the Email and password in Authentication Mode.
-    await firebase.registerUserWithEmailAndPassword(values.email, values.password);
-
-    success();
-
-    navigate('/signin');
-    // }
-    // catch (error) {
-    //   console.warn("#Signup Error", error);
-    //   error(error);
-    // }
+    try {
+      console.log("#Registering the User.")
+      //Below code will register the user details
+      await firebase.registerUserDetails(values.username, values.email, values.password, moment(values.dob[0]).format('DD-MM-YYYY'), values.gender, values.profileImage.file.originFileObj);
+      //Below code will register the Email and password in Authentication Mode.
+      await firebase.registerUserWithEmailAndPassword(values.email, values.password);
+      alert("User is registered Successfully.")
+      navigate('/signin');
+    }
+    catch (error) {
+      alert(error);
+    }
   }
-
-  // useEffect(() => {
-  //   if (firebase.isLoggedIn) {
-  //     navigate('/dashboard');
-  //   }
-  // }, [firebase, navigate]);
 
   return (
     <div className="App">
-      {contextHolder}
       <Space direction="vertical" style={{ width: '100%' }} size={[0, 48]}>
         <Layout className='mainLayout'>
           <Header className='mainHeader'>
@@ -101,9 +54,6 @@ function Signup() {
                       ]}
                       hasFeedback>
                       <Input
-                        // onChange={(e) => setUsername(e.target.value)}
-                        // value={username}
-                        // name={username}
                         className='formInput'
                         placeholder="username"
                         prefix={<UserOutlined />} />
@@ -122,9 +72,6 @@ function Signup() {
                       hasFeedback>
                       <Input
                         htmltype='email'
-                        // onChange={(e) => setEmail(e.target.value)}
-                        // value={email}
-                        // name={email}
                         className='formInput'
                         placeholder="email"
                         prefix={<MailOutlined />} />
@@ -134,18 +81,9 @@ function Signup() {
                       {
                         required: true,
                       }, { min: 6 },
-                      // {
-                      //   validator: (_, value) =>
-                      //     value && value.includes("A")
-                      //       ? Promise.resolve()
-                      //       : Promise.reject('Password does not match criteria.')
-                      // }
                     ]}
                       hasFeedback>
                       <Input.Password
-                        // onChange={(e) => setPassword(e.target.value)}
-                        // value={password}
-                        // name={password}
                         className='formInput'
                         placeholder="password"
                         prefix={<LockOutlined />} />
@@ -169,9 +107,6 @@ function Signup() {
                       ]}
                       hasFeedback>
                       <Input.Password
-                        // onChange={(e) => setConfirmPassword(e.target.value)}
-                        // value={confirmPassword}
-                        // name={confirmPassword}
                         className='formInput'
                         placeholder="confirm password"
                         prefix={<LockOutlined />} />
@@ -187,11 +122,6 @@ function Signup() {
                       <DatePicker
                         picker="date"
                         defaultValue={dayjs('01/01/2015', 'DD/MM/YYYY')} format={"DD/MM/YYYY"}
-                      // onChange={(date, dateString) => {
-                      //   console.log(dateString); setDob(date, dateString);
-                      // }}
-                      // value={dob}
-                      // name={dob} 
                       />
                     </Form.Item>
 
@@ -206,8 +136,6 @@ function Signup() {
                       ]}
                       hasFeedback>
                       <Radio.Group
-                      // onChange={(e) => setGender(e.target.value)} value={gender}
-                      // name={gender} 
                       >
                         <Radio value="male"> Male </Radio>
                         <Radio value="female"> Female </Radio>
@@ -232,7 +160,6 @@ function Signup() {
 
                     <Flex className='formLinks' justify={'center'} align={'center'}>
                       <label> Signin with </label> <GoogleOutlined className="googleIcon" title={"Google"} onClick={firebase.loginWithGoogle} />
-                      {/* <label>or <FacebookOutlined onClick={firebase.loginWithFacebook} /></label> */}
                     </Flex>
                   </Flex>
                 </Form>
