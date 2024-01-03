@@ -1,11 +1,11 @@
-import { Layout, Space, Breadcrumb } from 'antd';
-import { HomeOutlined, HeartFilled, WechatOutlined } from '@ant-design/icons';
-import LHeader from '../../components/Header/LHeader';
-import './ViewPosts.scss';
-import LFooter from '../../components/Footer/LFooter';
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from "react";
 import { getAllPosts } from "../../features/postDetailsSlice";
+import { Layout, Space, Breadcrumb } from 'antd';
+import { HomeOutlined, HeartFilled, WechatOutlined } from '@ant-design/icons';
+import LHeader from '../../components/Header/LHeader';
+import LFooter from '../../components/Footer/LFooter';
+import './ViewPosts.scss';
 
 const { Content } = Layout;
 
@@ -41,7 +41,7 @@ function ViewPosts() {
 
               <div className="leftPostsContentArea">
                 <h2> View Posts</h2>
-                {postData.loading && <div>Loading </div>}
+                {postData.loading && <div className="viewPosts">Loading </div>}
                 {!postData.loading && postData.error ? <div>Error : {postData.error} </div> : null}
                 {!postData.loading && postData.posts?.data?.allPostDetails.length ? (
                   <div>

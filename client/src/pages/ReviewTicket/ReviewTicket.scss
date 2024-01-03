@@ -6,10 +6,6 @@ $layoutOrangeColor : #FF5300;
 .reviewTicket {
     width: 90%;
     margin: 0% auto;
-    // height: 100%;
-    // display: flex;
-    // align-items: center;
-    // justify-content: center;
 
     .breadcrumBg {
         padding: 5px 10px;
@@ -28,27 +24,27 @@ $layoutOrangeColor : #FF5300;
 
         .reviewTicketContainer {
             .colWidth {
-                width: 25%;
+                width: 100%;
+                margin-bottom: 0.5rem;
+                display: flex;
+                justify-content: center;
             }
 
             .insideColumn {
-                // display: flex;
-                // align-items: center;
-                // justify-content: center;
-                // flex-wrap: wrap;
+                display: flex;
+                align-items: center;
                 background-color: white;
                 border-radius: 5px;
                 padding: 5px 10px;
-                // margin: 5px;
                 box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 2.6px;
 
                 .profileImg {
-                    // width: 20%;
                     text-align: center;
                     padding: 5px;
+                    width: 200px;
 
                     img {
-                        width: 50%;
+                        width: 50px;
                     }
 
                     h2 {
@@ -57,7 +53,6 @@ $layoutOrangeColor : #FF5300;
                 }
 
                 .profileMsg {
-                    // width: 80%;
                     padding: 5px;
                     display: flex;
                     flex-direction: column;
@@ -78,17 +73,5 @@ $layoutOrangeColor : #FF5300;
             }
         }
 
-    }
-}
-
-@media only screen and (max-width: 600px) {
-    .reviewTicket .mainReviewTicketContentArea .reviewTicketContainer .colWidth {
-        width: 100%;
-    }
-}
-
-@media only screen and (max-width: 768px) {
-    .reviewTicket .mainReviewTicketContentArea .reviewTicketContainer .colWidth {
-        width: 30%;
     }
 }

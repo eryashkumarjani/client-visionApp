@@ -6,10 +6,6 @@ $layoutOrangeColor : #FF5300;
 .homemadeProducts {
     width: 90%;
     margin: 0% auto;
-    // height: 100%;
-    // display: flex;
-    // align-items: center;
-    // justify-content: center;
 
     .breadcrumBg {
         padding: 5px 10px;
@@ -41,6 +37,10 @@ $layoutOrangeColor : #FF5300;
                 .cartItemBox {
                     width: 25%;
                     margin-bottom: 0.5rem;
+
+                    img {
+                        height: 150px !important;
+                    }
                 }
 
                 .ant-tabs-nav-list {

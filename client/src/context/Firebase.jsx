@@ -7,7 +7,6 @@ import {
     createUserWithEmailAndPassword,
     signInWithEmailAndPassword,
     GoogleAuthProvider,
-    FacebookAuthProvider,
     signInWithPopup,
     onAuthStateChanged,
     signOut,
@@ -40,8 +39,6 @@ const firebaseApp = initializeApp(firebaseConfig);
 const firebaseAuth = getAuth(firebaseApp);
 // instance for google auth provider
 const googleAuthProvider = new GoogleAuthProvider();
-// instance for google auth provider
-const facebookAuthProvider = new FacebookAuthProvider();
 // instance of Firestore
 const firestore = getFirestore(firebaseApp);
 export { firestore };
@@ -88,10 +85,6 @@ export const FirebaseProvider = (props) => {
 
     const loginWithGoogle = () => {
         signInWithPopup(firebaseAuth, googleAuthProvider);
-    };
-
-    const loginWithFacebook = () => {
-        signInWithPopup(firebaseAuth, facebookAuthProvider);
     };
 
     const logoutUser = () => {

@@ -1,17 +1,14 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-// import { useNavigate } from "react-router-dom";
-import { Layout, Space, Flex, Breadcrumb, Form, Input, Upload, Button, Select, Table, Popconfirm, message } from 'antd';
+import { useDispatch } from "react-redux";
+import { addProduct, getAllProducts } from "../../features/productDetailsSlice";
+import { Layout, Space, Flex, Breadcrumb, Form, Input, Upload, Button, Select, Table, Popconfirm, notification } from 'antd';
 import { HomeOutlined, BookOutlined, FileImageOutlined, DeleteOutlined, EditOutlined } from '@ant-design/icons';
 import LHeader from '../../components/Header/LHeader';
 import LFooter from '../../components/Footer/LFooter';
 import './AddProducts.scss';
-import { useDispatch } from "react-redux";
-import { addProduct, getAllProducts } from "../../features/productDetailsSlice";
-
 
 const { Content } = Layout;
-// const { Meta } = Card;
 const { Option } = Select;
 
 const EditableCell = ({ editing, dataIndex, title, record, children, ...restProps }) => {
@@ -31,8 +28,8 @@ const EditableCell = ({ editing, dataIndex, title, record, children, ...restProp
 };
 
 function AddProducts() {
-  // const navigate = useNavigate();
   const dispatch = useDispatch();
+  const [api, contextHolder] = notification.useNotification();
 
   //Editing Data in Form
   const [form] = Form.useForm();
@@ -184,7 +181,7 @@ function AddProducts() {
   //Delete Function
   const handleDelete = (value) => {
     const dataSource = [...modifiedData];
-    const filteredData = dataSource.filter((item) => item.id !== value.id);
+    const filteredData = dataSource.filter((item) => item._id !== value._id);
     setGridData(filteredData);
   };
 
@@ -206,41 +203,28 @@ function AddProducts() {
   });
 
   //value is coming in console but...
-  //Notification Code
-  const [messageApi, contextHolder] = message.useMessage();
-
-  const success = () => {
-    messageApi.open({
-      type: 'success',
-      content: 'Provider is added Successfully',
-    });
-  };
-
-  // const error = () => {
-  //   messageApi.open({
-  //     type: 'error',
-  //     content: 'Something went wrong!',
-  //   });
-  // };
-
-
-  //value is coming in console but...
   const handleSubmit = (values) => {
     try {
-      console.log({ values });
       const formData = new FormData();
       formData.append('productName', values.productName);
       formData.append('productPrice', values.productPrice);
       formData.append('productType', values.productType);
       formData.append('productImage', values.productImage.file.originFileObj);
       dispatch(addProduct(formData));
-      success();
+      api['success']({
+        message: 'Success',
+        description:
+          'Product has been added successfully',
+      });
+      window.location.reload(false);
     }
     catch (error) {
-      console.warn("#Error", error);
-      // error(error);
+      api['error']({
+        message: 'Error',
+        description:
+          'Something went wrong!',
+      });
     }
-
   }
 
   useEffect(() => {
@@ -249,6 +233,7 @@ function AddProducts() {
 
   return (
     <>
+      {contextHolder}
       <Space direction="vertical" style={{ width: '100%' }} size={[0, 48]}>
         <Layout className='mainLayout'>
           <LHeader />
@@ -351,3 +336,4 @@ function AddProducts() {
 }
 
 export default AddProducts;
+

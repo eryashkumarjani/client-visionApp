@@ -1,33 +1,32 @@
-import { Layout, Space, Breadcrumb, Form, Input, Upload, Button } from 'antd';
-import { HomeOutlined, FileImageOutlined, HeartFilled, WechatOutlined } from '@ant-design/icons';
-import LHeader from '../../components/Header/LHeader';
-import './CreatePosts.scss';
-import LFooter from '../../components/Footer/LFooter';
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from "react";
 import { createPost, getAllPosts } from "../../features/postDetailsSlice";
+import { Layout, Space, Breadcrumb, Form, Input, Upload, Button, notification } from 'antd';
+import { HomeOutlined, FileImageOutlined, HeartFilled, WechatOutlined } from '@ant-design/icons';
+import LHeader from '../../components/Header/LHeader';
+import LFooter from '../../components/Footer/LFooter';
+import './CreatePosts.scss';
 
 const { Content } = Layout;
 
 function CreatePosts() {
-  // const navigate = useNavigate();
+  const [api, contextHolder] = notification.useNotification();
   const dispatch = useDispatch();
-
-  // const [postDescription, setPostDescription] = useState(null);
-  // const [postUploadImage, setPostUploadImage] = useState("");
 
   const postData = useSelector((state) => state.post);
   console.log("#PostData", postData);
 
   const handleSubmit = (values) => {
-    // console.log("Handle Submit Values", values)
-    // console.log("#setPostDescription", values.postText);
-    // console.log("#postUploadImage", values.postImg.file.originFileObj);
-
     const formData = new FormData();
     formData.append('postDescription', values.postText);
     formData.append('postUploadImage', values.postImg.file.originFileObj);
     dispatch(createPost(formData));
+    api['success']({
+      message: 'Success',
+      description:
+        'Post has been created successfully',
+    });
+    window.location.reload(false);
   }
 
   useEffect(() => {
@@ -36,6 +35,7 @@ function CreatePosts() {
 
   return (
     <>
+      {contextHolder}
       <Space direction="vertical" style={{ width: '100%' }} size={[0, 48]}>
         <Layout className='mainLayout'>
           <LHeader />
@@ -65,8 +65,6 @@ function CreatePosts() {
                       <Form.Item name="postText"
                         hasFeedback>
                         <Input
-                          // onChange={(e) => setDescription(e.target.value)}
-                          // value={description}
                           className='formInput'
                           placeholder="What's happening?" />
                       </Form.Item>
@@ -76,8 +74,6 @@ function CreatePosts() {
                             action="https://run.mocky.io/v3/435e224c-44fb-4773-9faf-380c5e6a2188"
                             listType="picture"
                             maxCount={1}
-                            // onChange={(e) => setPostImage(e.target.files[0])}
-                            // value={postImage}
                             multiple
                             className="postUpload"
                           >
@@ -87,12 +83,10 @@ function CreatePosts() {
                         <Button className="postBtn" htmlType="submit"> Post </Button>
                       </div>
                     </Form>
-
-
                   </div>
                 </div>
 
-                {postData.loading && <div>Loading </div>}
+                {postData.loading && <div className="viewPosts">Loading </div>}
                 {!postData.loading && postData.error ? <div>Error : {postData.error} </div> : null}
                 {!postData.loading && postData.posts?.data?.allPostDetails ? (
                   <div>

@@ -1,24 +1,19 @@
-// import { useNavigate } from "react-router-dom";
-import { Layout, Space, Card, Breadcrumb, Tabs, Row, Col, } from 'antd';
-import { HomeOutlined } from '@ant-design/icons';
-import LHeader from '../../components/Header/LHeader';
-import './ServiceProviders.scss';
-import LFooter from '../../components/Footer/LFooter';
 import { useEffect } from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import { getAllProviders } from "../../features/providerDetailsSlice";
+import { Layout, Space, Card, Breadcrumb, Tabs, Row, Col, } from 'antd';
+import { HomeOutlined } from '@ant-design/icons';
+import LHeader from '../../components/Header/LHeader';
+import LFooter from '../../components/Footer/LFooter';
+import './ServiceProviders.scss';
 
 const { Content } = Layout;
 const { Meta } = Card;
 
 function ServiceProviders() {
-  // const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  // const [open, setOpen] = useState(false);
-
   const providerData = useSelector((state) => state.provider);
-
   console.log("PROVIDER_DATA", providerData)
 
   //Filter Tutor providers from APIs
@@ -74,7 +69,6 @@ function ServiceProviders() {
                       {!providerData.loading && providerData.providers?.data?.allProvidersDetails.length ? (
                         <Row gutter={24}>
                           {
-                            // providerData?.providers?.data?.allProvidersDetails.map((el, index) => (
                             tutorList.map((el, index) => (
                               <Col className="providerCard">
                                 <Card
@@ -101,36 +95,7 @@ function ServiceProviders() {
                         </Row>
 
                       ) : null}
-                      {/* <Modal
-                        title="Details of Service Provider"
-                        centered
-                        open={open}
-                        onOk={() => setOpen(false)}
-                        onCancel={() => setOpen(false)}
-                        width={1000}
-                      >
-                        <hr />
-                        <Row gutter={12}>
-                          <Col span={24} >
-                            <div style={{ display: "flex", alignItems: "center", justifyContent: "space-around" }}>
-                              <div className="profileName" style={{ textAlign: 'center' }}>
-                                <img
-                                  alt="example"
-                                  width={150}
-                                  src="https://cdn1.iconfinder.com/data/icons/people-cultures/512/_indian_man-512.png"
-                                />
-                                <h3 style={{ margin: '0' }}> RAMESH PATEL </h3>
 
-                              </div>
-                              <div className="profileDetails" style={{ padding: "10px 20px", textAlign: "center" }}>
-                                <p> Ramesh patel is a teacher in private school where he is teaching the maths.<br />
-                                  He is expert in mathematical things. <br />He has been received many gold medals in his Life. </p>
-                                <Button> CHAT NOW</Button>
-                              </div>
-                            </div>
-                          </Col>
-                        </Row>
-                      </Modal> */}
                     </Tabs.TabPane>
                     <Tabs.TabPane tab="Stationery" key="tab2">
                       {providerData.loading && <div>Loading </div>}
@@ -203,16 +168,16 @@ function ServiceProviders() {
                       ) : null}
                     </Tabs.TabPane>
                     <Tabs.TabPane tab="Electronic Repair" key="tab4">
-                      <p> Tab 4</p>
+                      <p> No Data... </p>
                     </Tabs.TabPane>
                     <Tabs.TabPane tab="Hair Salon" key="tab5">
-                      <p> Tab 5</p>
+                      <p> No Data... </p>
                     </Tabs.TabPane>
                     <Tabs.TabPane tab="Pharmacy" key="tab6">
-                      <p> Tab 6</p>
+                      <p> No Data... </p>
                     </Tabs.TabPane>
                     <Tabs.TabPane tab="Carpenter" key="tab7">
-                      <p> Tab 7</p>
+                      <p> No Data...</p>
                     </Tabs.TabPane>
                   </Tabs>
                 </div>
