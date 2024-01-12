@@ -149,7 +149,7 @@ function Signup() {
                         listType="picture">
                         <div>
                           <CloudUploadOutlined />
-                          <div style={{ marginTop: 8 }}>Upload</div>
+                          <div style={{ marginTop: 8 }}>Upload Profile Image</div>
                         </div>
                       </Upload>
                     </Form.Item>
